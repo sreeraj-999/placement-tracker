@@ -8,6 +8,8 @@ const progressRoutes = require("./routes/progressRoutes");
 const aptitudeRoutes = require("./routes/aptitudeRoutes");
 const resumeRoutes = require("./routes/resumeRoutes");
 const companyRoutes = require("./routes/companyRoutes");
+const leetcodeRoutes = require("./routes/leetcodeRoutes");
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 dotenv.config();
 
@@ -30,6 +32,7 @@ app.use("/api/progress", progressRoutes);
 app.use("/api/aptitude", aptitudeRoutes);
 app.use("/api/resume", resumeRoutes);
 app.use("/api/company", companyRoutes);
+app.use("/api/leetcode", leetcodeRoutes);
 
 const PORT = process.env.PORT || 5000;
 
