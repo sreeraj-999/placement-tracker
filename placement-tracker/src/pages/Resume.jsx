@@ -13,7 +13,7 @@ function Resume() {
   const fetchResume = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/resume",
+        "/api/resume",
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -30,7 +30,7 @@ function Resume() {
   const addResumeScore = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/resume/add",
+        "/api/resume/add",
         {
           score,
         },

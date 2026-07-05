@@ -31,7 +31,7 @@ function Dashboard() {
   const fetchProgress = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/progress",
+        "/api/progress",
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -54,7 +54,7 @@ function Dashboard() {
   const fetchAptitude = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/aptitude",
+        "/api/aptitude",
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -73,7 +73,7 @@ function Dashboard() {
   const fetchResume = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/resume",
+        "/api/resume",
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -92,7 +92,7 @@ function Dashboard() {
   const fetchLeetcode = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/leetcode",
+        "/api/leetcode",
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -115,7 +115,7 @@ function Dashboard() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/leetcode/sync",
+        "/api/leetcode/sync",
         { username },
         {
           headers: {

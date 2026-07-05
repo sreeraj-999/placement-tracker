@@ -17,7 +17,7 @@ function Company() {
   const fetchCompanies = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/company",
+        "/api/company",
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -34,7 +34,7 @@ function Company() {
   const addCompany = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/company/add",
+        "/api/company/add",
         {
           companyName,
           aptitude,
@@ -64,7 +64,7 @@ function Company() {
   const deleteCompany = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/company/${id}`,
+        `/api/company/${id}`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),

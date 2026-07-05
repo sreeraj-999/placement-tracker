@@ -16,7 +16,7 @@ function Coding() {
   const fetchProgress = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/progress",
+        "/api/progress",
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -41,7 +41,7 @@ function Coding() {
   const addProgress = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/progress/add",
+        "/api/progress/add",
         {
           topic,
           problemsSolved,

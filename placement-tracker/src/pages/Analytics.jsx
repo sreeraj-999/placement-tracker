@@ -14,7 +14,7 @@ function Analytics() {
   const fetchData = async () => {
     try {
       const progressRes = await axios.get(
-        "http://localhost:5000/api/progress",
+        "/api/progress",
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -31,7 +31,7 @@ function Analytics() {
       setTotalSolved(total);
 
       const aptitudeRes = await axios.get(
-        "http://localhost:5000/api/aptitude"
+        "/api/aptitude"
       );
 
       if (aptitudeRes.data.length > 0) {
@@ -51,7 +51,7 @@ function Analytics() {
       }
 
       const resumeRes = await axios.get(
-        "http://localhost:5000/api/resume"
+        "/api/resume"
       );
 
       if (resumeRes.data.length > 0) {
