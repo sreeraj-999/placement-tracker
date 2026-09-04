@@ -5,6 +5,7 @@ import axios from "axios";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import "@fontsource/poppins";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 

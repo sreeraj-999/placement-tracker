@@ -1,77 +1,95 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import "./Register.css";
+
+import Lottie from "lottie-react";
+import codeAnimation from "../assets/code.json";
 
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const registerUser = async () => {
     try {
-      const res = await axios.post(
-        "/api/users/register",
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      await axios.post("/api/users/register", {
+        name,
+        email,
+        password,
+      });
 
-      alert(res.data.message);
+      alert("Registration Successful");
+      navigate("/login");
     } catch (error) {
-      alert(error.response.data.message);
+      alert(error.response?.data?.message || "Registration Failed");
     }
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: "500px" }}>
-      <div className="card shadow p-4">
-        <h2 className="text-center mb-4">
-          Create Account
-        </h2>
+<div className="register-page">
 
-        <input
-          className="form-control mb-3"
-          type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+      <div className="register-container">
 
-        <input
-          className="form-control mb-3"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        {/* Left Side */}
+        <div className="left-side">
 
-        <input
-          className="form-control mb-3"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <Lottie
+            animationData={codeAnimation}
+            loop={true}
+            style={{
+              width: "90%",
+              maxWidth: "420px",
+              marginBottom: "20px",
+            }}
+          />
 
-        <button
-          className="btn btn-success w-100"
-          onClick={registerUser}
-        >
-          Register
-        </button>
+          <h1>TalentVerse</h1>
 
-        <div className="text-center mt-3">
-          <p>Already have an account?</p>
+          <p>Your Complete Placement Preparation Hub</p>
 
-          <Link
-            to="/login"
-            className="btn btn-outline-primary"
-          >
-            Login
-          </Link>
         </div>
+
+        {/* Right Side */}
+        <div className="right-side">
+
+          <h2>Create Account</h2>
+
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button onClick={registerUser}>
+            Register
+          </button>
+
+          <p>
+            Already have an account?
+            <Link to="/login"> Login</Link>
+          </p>
+
+        </div>
+
       </div>
     </div>
   );

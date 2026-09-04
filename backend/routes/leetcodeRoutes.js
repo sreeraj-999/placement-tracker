@@ -59,11 +59,14 @@ router.post("/sync", authMiddleware, async (req, res) => {
       });
     }
 
+    
+
     profile.username = username;
     profile.totalSolved = stats[0].count;
     profile.easySolved = stats[1].count;
     profile.mediumSolved = stats[2].count;
     profile.hardSolved = stats[3].count;
+    profile.lastSync = new Date();
 
     await profile.save();
 

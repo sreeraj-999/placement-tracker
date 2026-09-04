@@ -7,9 +7,14 @@ import Coding from "./pages/Coding";
 import Aptitude from "./pages/Aptitude";
 import Resume from "./pages/Resume";
 import Analytics from "./pages/Analytics";
-import Company from "./pages/Company";
+import CompanyPreparation from "./pages/CompanyPreparation";
+import CompanyPDFs from "./pages/CompanyPDFs";
 
 import ProtectedRoute from "./components/ProtectedRoute";
+import ResumeAnalyzer from "./pages/ResumeAnalyzer";
+import StudentProfile from "./pages/StudentProfile";
+
+
 
 function App() {
   return (
@@ -56,12 +61,26 @@ function App() {
 
       <Route
         path="/company"
-        element={
-          <ProtectedRoute>
-            <Company />
-          </ProtectedRoute>
-        }
+        element={<CompanyPreparation />}
       />
+
+      <Route
+  path="/company"
+  element={
+    <ProtectedRoute>
+      <CompanyPreparation />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/company/:company"
+  element={
+    <ProtectedRoute>
+      <CompanyPDFs />
+    </ProtectedRoute>
+  }
+/>
 
       <Route
         path="/analytics"
@@ -71,6 +90,19 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      <Route
+  path="/resume-ai"
+  element={<ResumeAnalyzer />}
+/>
+<Route
+  path="/profile"
+  element={
+    <ProtectedRoute>
+      <StudentProfile />
+    </ProtectedRoute>
+  }
+/>
   
     </Routes>
   );

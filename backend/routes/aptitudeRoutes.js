@@ -1,53 +1,89 @@
 const express = require("express");
 const router = express.Router();
+
 const Aptitude = require("../models/Aptitude");
 const authMiddleware = require("../middleware/authMiddleware");
 
-// Add Aptitude Score
+
+// SAVE APTITUDE TEST RESULT
+
 router.post(
   "/add",
   authMiddleware,
   async (req, res) => {
+
     try {
-      const { quant, logical, verbal } = req.body;
 
-      const aptitude = new Aptitude({
+      const {
+        category,
+        score,
+        totalQuestions,
+        percentage
+      } = req.body;
+
+
+      const result = new Aptitude({
+
         userId: req.user.id,
-        quant,
-        logical,
-        verbal,
+
+        category,
+        score,
+        totalQuestions,
+        percentage,
+
       });
 
-      await aptitude.save();
 
-      res.status(201).json({
-        message: "Aptitude Score Added Successfully",
-      });
+      await result.save();
+
+
+      res.status(201).json(result);
+
     } catch (error) {
+
+      console.log(error);
+
       res.status(500).json({
-        message: error.message,
+        message: "Unable to save aptitude result"
       });
+
     }
+
   }
 );
 
-// Get User Aptitude Scores
+
+// GET ALL APTITUDE RESULTS
+
 router.get(
   "/",
   authMiddleware,
   async (req, res) => {
+
     try {
-      const aptitude = await Aptitude.find({
-        userId: req.user.id,
+
+      const results =
+        await Aptitude.find({
+          userId: req.user.id
+        }).sort({
+          createdAt: -1
+        });
+
+
+      res.json(results);
+
+    } catch (error) {
+
+      console.log(error);
+
+      res.status(500).json({
+        message: "Unable to fetch aptitude results"
       });
 
-      res.status(200).json(aptitude);
-    } catch (error) {
-      res.status(500).json({
-        message: error.message,
-      });
     }
+
   }
 );
+
 
 module.exports = router;

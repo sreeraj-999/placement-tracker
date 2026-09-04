@@ -1,17 +1,26 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+
+// Load .env FIRST
+dotenv.config();
+
+console.log("Gemini Key:", process.env.GEMINI_API_KEY);
+
 const cors = require("cors");
 
 const userRoutes = require("./routes/userRoutes");
 const progressRoutes = require("./routes/progressRoutes");
 const aptitudeRoutes = require("./routes/aptitudeRoutes");
 const resumeRoutes = require("./routes/resumeRoutes");
-const companyRoutes = require("./routes/companyRoutes");
+const companyPreparationRoutes = require("./routes/companyPreparationRoutes");
+const path = require("path");
 const leetcodeRoutes = require("./routes/leetcodeRoutes");
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+const resumeAIRoutes = require("./routes/resumeAI");
+const profileRoutes = require("./routes/profileRoutes");
+const questionRoutes = require("./routes/questionRoutes");
 
-dotenv.config();
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const app = express();
 
@@ -31,15 +40,16 @@ app.use("/api/users", userRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/aptitude", aptitudeRoutes);
 app.use("/api/resume", resumeRoutes);
-app.use("/api/company", companyRoutes);
+app.use("/pdfs", express.static(path.join(__dirname, "public/pdfs")));
+app.use("/api/company-preparation", companyPreparationRoutes);
 app.use("/api/leetcode", leetcodeRoutes);
+app.use("/api/ai", resumeAIRoutes);
+app.use("/api/profile", profileRoutes);
+app.use("/uploads", express.static("uploads"));
+app.use("/api/questions", questionRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
-  app.listen(PORT, () => {
-    console.log(`Server Running on Port ${PORT}`);
-  });
-}
-
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Server Running on Port ${PORT}`);
+});
