@@ -226,7 +226,7 @@ function Aptitude() {
           <div className="card shadow p-5 text-center">
 
             <h1 className="mb-3">
-              🧠 Aptitude Assessment
+               Aptitude Assessment
             </h1>
 
             <p className="text-muted fs-5">
@@ -236,9 +236,9 @@ function Aptitude() {
             </p>
 
             <div className="mt-4 mb-4">
-              <p>📊 Random Questions</p>
-              <p>🧮 3 Categories</p>
-              <p>🏆 One Final Score</p>
+              <p>Random Questions</p>
+              <p>3 Categories</p>
+              <p>One Final Score</p>
             </div>
 
             <button
@@ -276,7 +276,7 @@ function Aptitude() {
             <div className="col-md-4">
               <div className="card shadow h-100 p-4 text-center">
 
-                <h1>🔢</h1>
+                
                 <h4>Quantitative Aptitude</h4>
 
                 <p className="text-muted">
@@ -312,7 +312,7 @@ function Aptitude() {
             <div className="col-md-4">
               <div className="card shadow h-100 p-4 text-center">
 
-                <h1>🧠</h1>
+          
                 <h4>Logical Reasoning</h4>
 
                 <p className="text-muted">
@@ -357,7 +357,7 @@ function Aptitude() {
             <div className="col-md-4">
               <div className="card shadow h-100 p-4 text-center">
 
-                <h1>📖</h1>
+              
                 <h4>Verbal Ability</h4>
 
                 <p className="text-muted">
@@ -392,7 +392,7 @@ function Aptitude() {
                   >
                     {completedTests.logical
                       ? "Start Test"
-                      : "🔒 Locked"}
+                      : "🔒Locked"}
                   </button>
                 )}
 
@@ -411,7 +411,7 @@ function Aptitude() {
               >
                 {loading
                   ? "Saving Result..."
-                  : "View Final Result 🏆"}
+                  : "View Final Result"}
               </button>
 
             </div>
@@ -445,7 +445,7 @@ function Aptitude() {
 
           <div className="card shadow p-5 text-center">
 
-            <h1>🎉 Assessment Completed!</h1>
+            <h1>Assessment Completed!</h1>
 
             <p className="text-muted">
               Here is your complete aptitude test result.
@@ -455,7 +455,7 @@ function Aptitude() {
 
               <div className="col-md-4">
                 <div className="card p-3">
-                  <h5>🔢 Quantitative</h5>
+                  <h5>Quantitative</h5>
                   <h2>
                     {scores.quantitative}/
                     {totalQuestionsByCategory.quantitative}
@@ -465,7 +465,7 @@ function Aptitude() {
 
               <div className="col-md-4">
                 <div className="card p-3">
-                  <h5>🧠 Logical</h5>
+                  <h5>Logical</h5>
                   <h2>
                     {scores.logical}/
                     {totalQuestionsByCategory.logical}
@@ -475,7 +475,7 @@ function Aptitude() {
 
               <div className="col-md-4">
                 <div className="card p-3">
-                  <h5>📖 Verbal</h5>
+                  <h5>Verbal</h5>
                   <h2>
                     {scores.verbal}/
                     {totalQuestionsByCategory.verbal}
@@ -531,13 +531,13 @@ function Aptitude() {
 
         <h2>
           {category === "quantitative" &&
-            "🔢 Quantitative Aptitude"}
+            "Quantitative Aptitude"}
 
           {category === "logical" &&
-            "🧠 Logical Reasoning"}
+            "Logical Reasoning"}
 
           {category === "verbal" &&
-            "📖 Verbal Ability"}
+            "Verbal Ability"}
         </h2>
 
         <p className="text-muted">

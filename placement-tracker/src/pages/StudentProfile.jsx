@@ -207,7 +207,7 @@ function StudentProfile() {
             sx={{
               height: 130,
               background:
-                "linear-gradient(135deg, #2563eb, #2563eb)",
+                "linear-gradient(135deg, #e20505, #e20505)",
             }}
           />
 
@@ -226,7 +226,7 @@ function StudentProfile() {
                 margin: "auto",
                 border: "6px solid white",
                 boxShadow: 4,
-                bgcolor: "#2563eb",
+                bgcolor: "#e20505",
                 fontSize: 50,
               }}
             >
@@ -241,7 +241,7 @@ function StudentProfile() {
               startIcon={<PhotoCameraIcon />}
               sx={{
                 mt: 2,
-                color: "#0077b5",
+                color: "#e20505",
                 fontWeight: "bold",
               }}
             >
@@ -325,7 +325,7 @@ function StudentProfile() {
                 value={profile.fullName}
                 onChange={handleChange}
                 InputProps={{
-                  startAdornment: <PersonIcon sx={{ mr: 1, color: "#64748b" }} />,
+                  startAdornment: <PersonIcon sx={{ mr: 1, color: "#e20505" }} />,
                 }}
               />
 
@@ -337,7 +337,7 @@ function StudentProfile() {
                 value={profile.email}
                 onChange={handleChange}
                 InputProps={{
-                  startAdornment: <EmailIcon sx={{ mr: 1, color: "#64748b" }} />,
+                  startAdornment: <EmailIcon sx={{ mr: 1, color: "#e20505" }} />,
                 }}
               />
 
@@ -349,7 +349,7 @@ function StudentProfile() {
                 value={profile.phone}
                 onChange={handleChange}
                 InputProps={{
-                  startAdornment: <PhoneIcon sx={{ mr: 1, color: "#64748b" }} />,
+                  startAdornment: <PhoneIcon sx={{ mr: 1, color: "#e20505" }} />,
                 }}
               />
 
@@ -394,7 +394,7 @@ function StudentProfile() {
                 value={profile.linkedin}
                 onChange={handleChange}
                 InputProps={{
-                  startAdornment: <LinkedInIcon sx={{ mr: 1, color: "#0077b5" }} />,
+                  startAdornment: <LinkedInIcon sx={{ mr: 1, color: "#e20505" }} />,
                 }}
               />
 

@@ -26,25 +26,21 @@ function Dashboard() {
     fetchLeetcode();
   }, []);
 
-  const fetchAptitude = async () => {
-    try {
-      const res = await axios.get(
-        "/api/aptitude",
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      );
+const fetchAptitude = async () => {
+  try {
+    const res = await axios.get("/api/aptitude", {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
 
-      if (res.data.length > 0) {
-        setLatestAptitude(res.data[0]);
-      }
-
-    } catch (error) {
-      console.log(error);
+    if (res.data.length > 0) {
+      setLatestAptitude(res.data[0]);
     }
-  };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   const fetchResume = async () => {
     try {
@@ -168,7 +164,7 @@ function Dashboard() {
 
             <div className="stat-card primary-gradient">
 
-              <h6>Total Problems Solved</h6>
+              <h6>Coding Score</h6>
 
               <div className="stat-number">
                 {leetcode.totalSolved}
@@ -284,7 +280,7 @@ function Dashboard() {
 
                 <div className="col-md-3">
 
-                  <div className="card bg-primary text-white p-3 text-center">
+                  <div className="card total-card text-white p-3 text-center">
 
                     <h6>Total</h6>
 

@@ -4,10 +4,17 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+// ==========================================
 // REGISTER
+// ==========================================
+
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      email,
+      password
+    } = req.body;
 
     const userExists = await User.findOne({
       email,
@@ -28,6 +35,10 @@ router.post("/register", async (req, res) => {
       name,
       email,
       password: hashedPassword,
+
+      // Every newly registered account
+      // is a student by default.
+      role: "student",
     });
 
     await user.save();
@@ -35,17 +46,28 @@ router.post("/register", async (req, res) => {
     res.status(201).json({
       message: "User Registered Successfully",
     });
+
   } catch (error) {
+
     res.status(500).json({
       message: error.message,
     });
+
   }
 });
 
+
+// ==========================================
 // LOGIN
+// ==========================================
+
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+
+    const {
+      email,
+      password
+    } = req.body;
 
     const user = await User.findOne({
       email,
@@ -68,9 +90,15 @@ router.post("/login", async (req, res) => {
       });
     }
 
+
+    // ======================================
+    // CREATE JWT TOKEN
+    // ======================================
+
     const token = jwt.sign(
       {
         id: user._id,
+        role: user.role || "student",
       },
       "placementtrackersecret",
       {
@@ -78,17 +106,33 @@ router.post("/login", async (req, res) => {
       }
     );
 
+
+    // ======================================
+    // LOGIN RESPONSE
+    // ======================================
+
     res.status(200).json({
+
       message: "Login Successful",
+
       token,
+
       userId: user._id,
+
       name: user.name,
+
+      role: user.role || "student",
+
     });
+
   } catch (error) {
+
     res.status(500).json({
       message: error.message,
     });
+
   }
 });
+
 
 module.exports = router;

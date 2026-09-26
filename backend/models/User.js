@@ -17,6 +17,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    // USER ROLE
+    // Every newly registered user will be a student by default.
+    role: {
+      type: String,
+      enum: ["student", "admin"],
+      default: "student",
+    },
   },
   {
     timestamps: true,

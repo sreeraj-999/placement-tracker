@@ -67,3 +67,38 @@ body {
   padding: 25px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
+:root {
+  --bs-primary: #e20505;
+  --bs-primary-rgb: 226, 5, 5;
+}
+
+.btn-primary {
+  background-color: #e20505 !important;
+  border-color: #e20505 !important;
+}
+
+.btn-primary:hover {
+  background-color: #b80404 !important;
+  border-color: #b80404 !important;
+}
+
+.text-primary {
+  color: #e20505 !important;
+}
+
+.bg-primary {
+  background-color: #e20505 !important;
+}
+
+.border-primary {
+  border-color: #e20505 !important;
+}
+
+.progress-bar {
+  background-color: #e20505 !important;
+}
+
+.total-card {
+  background-color: #0d6efd !important;
+  color: white;
+}

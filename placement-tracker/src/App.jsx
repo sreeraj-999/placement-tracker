@@ -7,21 +7,39 @@ import Coding from "./pages/Coding";
 import Aptitude from "./pages/Aptitude";
 import Resume from "./pages/Resume";
 import Analytics from "./pages/Analytics";
-import CompanyPreparation from "./pages/CompanyPreparation";
-import CompanyPDFs from "./pages/CompanyPDFs";
 
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminProtectedRoute from "./components/AdminProtectedRoute";
+import AdminLayout from "./components/AdminLayout";
+
 import ResumeAnalyzer from "./pages/ResumeAnalyzer";
 import StudentProfile from "./pages/StudentProfile";
 
-
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import Students from "./pages/admin/Students";
+import StudentDetails from "./pages/admin/StudentDetails";
+import AdminAptitude from "./pages/admin/AdminAptitude";
+import CompanyPreparation from "./pages/CompanyPreparation";
+import CompanyPDFs from "./pages/CompanyPDFs";
+import AdminCompanies from "./pages/admin/AdminCompanies";
 
 function App() {
   return (
     <Routes>
-    <Route path="/" element={<Login />} />
-<Route path="/register" element={<Register />} />
-<Route path="/login" element={<Login />} />
+
+      {/* STUDENT ROUTES */}
+
+      <Route path="/" element={<Login />} />
+
+      <Route
+        path="/register"
+        element={<Register />}
+      />
+
+      <Route
+        path="/login"
+        element={<Login />}
+      />
 
       <Route
         path="/dashboard"
@@ -60,8 +78,32 @@ function App() {
       />
 
       <Route
-        path="/company"
-        element={<CompanyPreparation />}
+        path="/resume-ai"
+        element={
+          <ProtectedRoute>
+            <ResumeAnalyzer />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <StudentProfile />
+          </ProtectedRoute>
+        }
+      />
+
+
+
+      <Route
+        path="/analytics"
+        element={
+          <ProtectedRoute>
+            <Analytics />
+          </ProtectedRoute>
+        }
       />
 
       <Route
@@ -82,28 +124,68 @@ function App() {
   }
 />
 
+
+      {/* ========================= */}
+      {/* ADMIN ROUTES */}
+      {/* ========================= */}
+
       <Route
-        path="/analytics"
+        path="/admin"
         element={
-          <ProtectedRoute>
-            <Analytics />
-          </ProtectedRoute>
+          <AdminProtectedRoute>
+            <AdminLayout>
+              <AdminDashboard />
+            </AdminLayout>
+          </AdminProtectedRoute>
         }
       />
 
       <Route
-  path="/resume-ai"
-  element={<ResumeAnalyzer />}
-/>
+        path="/admin/students"
+        element={
+          <AdminProtectedRoute>
+            <AdminLayout>
+              <Students />
+            </AdminLayout>
+          </AdminProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/students/:id"
+        element={
+          <AdminProtectedRoute>
+            <AdminLayout>
+              <StudentDetails />
+            </AdminLayout>
+          </AdminProtectedRoute>
+        }
+      />
+
+      {/* PLACEHOLDERS FOR NEXT ADMIN PAGES */}
+
 <Route
-  path="/profile"
+  path="/admin/aptitude"
   element={
-    <ProtectedRoute>
-      <StudentProfile />
-    </ProtectedRoute>
+    <AdminProtectedRoute>
+      <AdminLayout>
+        <AdminAptitude />
+      </AdminLayout>
+    </AdminProtectedRoute>
   }
 />
-  
+<Route
+  path="/admin/companies"
+  element={
+    <AdminProtectedRoute>
+      <AdminLayout>
+        <AdminCompanies />
+      </AdminLayout>
+    </AdminProtectedRoute>
+  }
+/>
+
+
     </Routes>
   );
 }

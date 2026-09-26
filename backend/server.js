@@ -13,12 +13,14 @@ const userRoutes = require("./routes/userRoutes");
 const progressRoutes = require("./routes/progressRoutes");
 const aptitudeRoutes = require("./routes/aptitudeRoutes");
 const resumeRoutes = require("./routes/resumeRoutes");
-const companyPreparationRoutes = require("./routes/companyPreparationRoutes");
 const path = require("path");
 const leetcodeRoutes = require("./routes/leetcodeRoutes");
 const resumeAIRoutes = require("./routes/resumeAI");
 const profileRoutes = require("./routes/profileRoutes");
 const questionRoutes = require("./routes/questionRoutes");
+const companyRoutes = require("./routes/companyRoutes");
+
+const adminRoutes = require("./routes/adminRoutes");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
@@ -41,12 +43,14 @@ app.use("/api/progress", progressRoutes);
 app.use("/api/aptitude", aptitudeRoutes);
 app.use("/api/resume", resumeRoutes);
 app.use("/pdfs", express.static(path.join(__dirname, "public/pdfs")));
-app.use("/api/company-preparation", companyPreparationRoutes);
 app.use("/api/leetcode", leetcodeRoutes);
 app.use("/api/ai", resumeAIRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/uploads", express.static("uploads"));
 app.use("/api/questions", questionRoutes);
+app.use("/api/companies", companyRoutes);
+
+app.use("/api/admin", adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 

@@ -61,10 +61,10 @@ function Sidebar() {
       path: "/resume",
     },
     {
-      text: "Company Tracker",
-      icon: <BusinessIcon />,
-      path: "/company",
-    },
+     text: "COMPANY TRACKER",
+     path: "/company",
+     icon: <BusinessIcon />,
+ },
     {
       text: "Analytics",
       icon: <AnalyticsIcon />,
@@ -154,11 +154,11 @@ function Sidebar() {
                 : "#cbd5e1",
             bgcolor:
               location.pathname === item.path
-                ? "#2563eb"
+                ? "#e20505"
                 : "transparent",
 
             "&:hover": {
-              bgcolor: "#1d4ed8",
+              bgcolor: "#ff3333",
               color: "#fff",
             },
           }}
