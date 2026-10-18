@@ -75,20 +75,24 @@ function AdminSidebar() {
           mb: 3,
         }}
       >
-        <Typography
-          sx={{
-            fontSize: "30px",
-            fontWeight: 800,
-            letterSpacing: "1px",
-            background:
-              "linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            lineHeight: 1.2,
-          }}
-        >
-          TalentVerse
-        </Typography>
+<Typography
+  component="h2"
+  sx={{
+    fontFamily: "'Arial Black', Impact, sans-serif",
+    fontSize: "30px",
+    fontWeight: 900,
+    letterSpacing: "-1.5px",
+    color: "#ffffff",
+    textAlign: "center",
+    lineHeight: 1.1,
+    whiteSpace: "nowrap",
+  }}
+>
+  TALENT
+  <Box component="span" sx={{ color: "#e50914" }}>
+    VERSE
+  </Box>
+</Typography>
 
         <Typography
           sx={{

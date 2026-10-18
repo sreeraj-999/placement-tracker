@@ -111,14 +111,20 @@ function StudentDetails() {
 
   return (
 
-    <div className="container-fluid min-vh-100 bg-light p-0">
+     <div
+    className="container-fluid bg-light p-0"
+    style={{
+      minHeight: "calc(100vh - 130px)",
+      overflowX: "hidden",
+    }}
+  >
 
 
       {/* ====================================== */}
       {/* CONTENT */}
       {/* ====================================== */}
 
-      <div className="container py-4">
+      <div className="container py-3">
 
 
         <button
@@ -227,98 +233,10 @@ function StudentDetails() {
 
         </div>
 
-
-        {/* ====================================== */}
-        {/* PREPARATION INFORMATION */}
-        {/* ====================================== */}
-
-        <div className="row g-4">
-
-
-          <div className="col-md-4">
-
-            <div className="card shadow-sm border-0 h-100">
-
-              <div className="card-body">
-
-                <h5 className="fw-bold">
-                  Coding Progress
-                </h5>
-
-                <p className="text-muted">
-                  Student coding and LeetCode
-                  information will be displayed
-                  here.
-                </p>
-
-                <span className="badge bg-secondary">
-                  Coming Next
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div className="col-md-4">
-
-            <div className="card shadow-sm border-0 h-100">
-
-              <div className="card-body">
-
-                <h5 className="fw-bold">
-                  Aptitude Performance
-                </h5>
-
-                <p className="text-muted">
-                  Student aptitude test scores
-                  will be displayed here.
-                </p>
-
-                <span className="badge bg-secondary">
-                  Coming Next
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div className="col-md-4">
-
-            <div className="card shadow-sm border-0 h-100">
-
-              <div className="card-body">
-
-                <h5 className="fw-bold">
-                  Resume & Readiness
-                </h5>
-
-                <p className="text-muted">
-                  Resume score and placement
-                  readiness information will be
-                  displayed here.
-                </p>
-
-                <span className="badge bg-secondary">
-                  Coming Next
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
       </div>
 
     </div>
+    
 
   );
 }

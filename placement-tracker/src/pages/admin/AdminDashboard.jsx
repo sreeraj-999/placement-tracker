@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -6,396 +7,183 @@ import {
   Typography,
   Card,
   CardContent,
-  Grid,
 } from "@mui/material";
 
 import PeopleIcon from "@mui/icons-material/People";
-import SchoolIcon from "@mui/icons-material/School";
-import BusinessIcon from "@mui/icons-material/Business";
 
 function AdminDashboard() {
-  const [stats, setStats] = useState({
-    totalStudents: 0,
-    totalQuestions: 0,
-    totalTestAttempts: 0,
-    totalAdmins: 0,
-  });
+  const [totalStudents, setTotalStudents] = useState(0);
 
   useEffect(() => {
-    fetchDashboard();
-  }, []);
+    const fetchDashboard = async () => {
+      try {
+        const token = localStorage.getItem("token");
 
-  const fetchDashboard = async () => {
-    try {
-      const token = localStorage.getItem("token");
-
-      const response = await axios.get(
-        "/api/admin/dashboard",
-        {
+        const response = await axios.get("/api/admin/dashboard", {
           headers: {
             Authorization: token,
           },
-        }
-      );
+        });
 
-      setStats(response.data);
-    } catch (error) {
-      console.log(
-        "Admin dashboard error:",
-        error
-      );
-    }
-  };
+        setTotalStudents(response.data.totalStudents ?? 0);
+      } catch (error) {
+        console.error("Admin dashboard error:", error);
+      }
+    };
+
+    fetchDashboard();
+  }, []);
 
   return (
     <Box
       sx={{
+        height: "calc(100vh - 82px)",
+        minHeight: 0,
         width: "100%",
+        boxSizing: "border-box",
+        backgroundColor: "#ffffff",
+        px: 2,
+        py: { xs: 2, md: 3 },
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
       }}
     >
-
-      {/* HEADER */}
-
+      {/* TALENTVERSE HEADER */}
       <Box
         sx={{
-          mb: 4,
+          textAlign: "center",
+          mb: { xs: 3, md: 4 },
+          width: "100%",
         }}
       >
         <Typography
+          component="h1"
           sx={{
-            fontSize: "36px",
-            fontWeight: 700,
-            color: "#1e293b",
-            mb: 1,
+            fontFamily: "'Arial Black', 'Impact', sans-serif",
+            fontSize: {
+              xs: "2.5rem",
+              sm: "4rem",
+              md: "5.5rem",
+            },
+            fontWeight: 900,
+            letterSpacing: {
+              xs: "-2px",
+              md: "-4px",
+            },
+            lineHeight: 1.05,
+            color: "#111111",
           }}
         >
-          Admin Dashboard
+          TALENT
+          <Box
+            component="span"
+            sx={{
+              color: "#e50914",
+            }}
+          >
+            VERSE
+          </Box>
         </Typography>
 
         <Typography
           sx={{
-            fontSize: "17px",
-            color: "#64748b",
+            mt: 1,
+            color: "#333333",
+            fontSize: { xs: "0.75rem", md: "1rem" },
+            fontWeight: 700,
+            letterSpacing: { xs: "3px", md: "5px" },
           }}
         >
-          Manage students, aptitude questions and
-          company preparation resources.
+          ADMIN DASHBOARD
         </Typography>
       </Box>
 
-
-      {/* STATISTICS */}
-
-      <Grid
-        container
-        spacing={3}
-      >
-
-        {/* STUDENTS */}
-
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <Card
-            sx={{
-              borderRadius: 3,
-              boxShadow: 2,
-              height: "150px",
-            }}
-          >
-            <CardContent
-              sx={{
-                p: 3,
-              }}
-            >
-
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                }}
-              >
-
-                <Box
-                  sx={{
-                    width: 50,
-                    height: 50,
-                    borderRadius: 2,
-                    backgroundColor: "#dbeafe",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <PeopleIcon
-                    sx={{
-                      color: "#2563eb",
-                      fontSize: 30,
-                    }}
-                  />
-                </Box>
-
-                <Box>
-                  <Typography
-                    sx={{
-                      color: "#64748b",
-                      fontSize: "15px",
-                    }}
-                  >
-                    Total Students
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      fontSize: "32px",
-                      fontWeight: 700,
-                      color: "#2563eb",
-                    }}
-                  >
-                    {stats.totalStudents}
-                  </Typography>
-                </Box>
-
-              </Box>
-
-            </CardContent>
-          </Card>
-        </Grid>
-
-
-        {/* APTITUDE QUESTIONS */}
-
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <Card
-            sx={{
-              borderRadius: 3,
-              boxShadow: 2,
-              height: "150px",
-            }}
-          >
-            <CardContent
-              sx={{
-                p: 3,
-              }}
-            >
-
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                }}
-              >
-
-                <Box
-                  sx={{
-                    width: 50,
-                    height: 50,
-                    borderRadius: 2,
-                    backgroundColor: "#dcfce7",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <SchoolIcon
-                    sx={{
-                      color: "#16a34a",
-                      fontSize: 30,
-                    }}
-                  />
-                </Box>
-
-                <Box>
-                  <Typography
-                    sx={{
-                      color: "#64748b",
-                      fontSize: "15px",
-                    }}
-                  >
-                    Aptitude Questions
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      fontSize: "32px",
-                      fontWeight: 700,
-                      color: "#16a34a",
-                    }}
-                  >
-                    {stats.totalQuestions}
-                  </Typography>
-                </Box>
-
-              </Box>
-
-            </CardContent>
-          </Card>
-        </Grid>
-
-
-        {/* ADMINISTRATORS */}
-
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <Card
-            sx={{
-              borderRadius: 3,
-              boxShadow: 2,
-              height: "150px",
-            }}
-          >
-            <CardContent
-              sx={{
-                p: 3,
-              }}
-            >
-
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                }}
-              >
-
-                <Box
-                  sx={{
-                    width: 50,
-                    height: 50,
-                    borderRadius: 2,
-                    backgroundColor: "#fef3c7",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <BusinessIcon
-                    sx={{
-                      color: "#d97706",
-                      fontSize: 30,
-                    }}
-                  />
-                </Box>
-
-                <Box>
-                  <Typography
-                    sx={{
-                      color: "#64748b",
-                      fontSize: "15px",
-                    }}
-                  >
-                    Administrators
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      fontSize: "32px",
-                      fontWeight: 700,
-                      color: "#d97706",
-                    }}
-                  >
-                    {stats.totalAdmins}
-                  </Typography>
-                </Box>
-
-              </Box>
-
-            </CardContent>
-          </Card>
-        </Grid>
-
-      </Grid>
-
-
-      {/* ADMIN RESPONSIBILITIES */}
-
+      {/* STUDENT COUNT CARD */}
       <Card
+        elevation={0}
         sx={{
-          mt: 4,
-          borderRadius: 3,
-          boxShadow: 2,
+          width: "100%",
+          maxWidth: 450,
+          minHeight: 260,
+          borderRadius: 4,
+          border: "1px solid #fecaca",
+          borderLeft: "6px solid #e50914",
+          background:
+            "linear-gradient(135deg, #fffafa 0%, #ffffff 100%)",
+          boxShadow: "0 8px 25px rgba(229, 9, 20, 0.10)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <CardContent
           sx={{
-            p: 4,
+            width: "100%",
+            textAlign: "center",
+            py: 3,
+            px: 3,
+            "&:last-child": {
+              pb: 3,
+            },
           }}
         >
-
-          <Typography
-            sx={{
-              fontSize: "24px",
-              fontWeight: 700,
-              color: "#1e293b",
-              mb: 3,
-            }}
-          >
-            Admin Responsibilities
-          </Typography>
-
+          {/* ICON */}
           <Box
             sx={{
+              width: 60,
+              height: 60,
+              mx: "auto",
+              mb: 1.5,
+              borderRadius: 3,
+              backgroundColor: "#fee2e2",
               display: "flex",
-              flexDirection: "column",
-              gap: 2,
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#e50914",
             }}
           >
-
-            <Typography
-              sx={{
-                color: "#475569",
-                fontSize: "16px",
-              }}
-            >
-              • Manage registered students
-            </Typography>
-
-            <Typography
-              sx={{
-                color: "#475569",
-                fontSize: "16px",
-              }}
-            >
-              • Manage aptitude question bank
-            </Typography>
-
-            <Typography
-              sx={{
-                color: "#475569",
-                fontSize: "16px",
-              }}
-            >
-              • Manage company information
-            </Typography>
-
-            <Typography
-              sx={{
-                color: "#475569",
-                fontSize: "16px",
-              }}
-            >
-              • Manage previous-year company question papers
-            </Typography>
-
+            <PeopleIcon sx={{ fontSize: 34 }} />
           </Box>
 
+          {/* LABEL */}
+          <Typography
+            sx={{
+              color: "#222222",
+              fontSize: "1.1rem",
+              fontWeight: 700,
+            }}
+          >
+            Total Students
+          </Typography>
+
+          {/* COUNT */}
+          <Typography
+            sx={{
+              mt: 0.5,
+              color: "#e50914",
+              fontSize: "3.5rem",
+              fontWeight: 900,
+              lineHeight: 1.1,
+            }}
+          >
+            {totalStudents}
+          </Typography>
+
+          {/* DESCRIPTION */}
+          <Typography
+            sx={{
+              mt: 0.5,
+              color: "#555555",
+              fontSize: "0.9rem",
+            }}
+          >
+      
+          </Typography>
         </CardContent>
       </Card>
-
     </Box>
   );
 }

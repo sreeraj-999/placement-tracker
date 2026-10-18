@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./Register.css";
-
 import Lottie from "lottie-react";
 import codeAnimation from "../assets/code.json";
 
@@ -15,6 +14,11 @@ function Register() {
   const navigate = useNavigate();
 
   const registerUser = async () => {
+    if (!name || !email || !password) {
+      alert("Please fill all fields");
+      return;
+    }
+
     try {
       await axios.post("/api/users/register", {
         name,
@@ -23,18 +27,27 @@ function Register() {
       });
 
       alert("Registration Successful");
+
       navigate("/login");
     } catch (error) {
-      alert(error.response?.data?.message || "Registration Failed");
+      console.log("Registration Error:", error);
+
+      alert(
+        error.response?.data?.message ||
+          "Registration Failed"
+      );
     }
   };
 
   return (
-<div className="register-page">
+    <div className="register-page">
 
       <div className="register-container">
 
-        {/* Left Side */}
+        {/* ================================
+            LEFT SIDE
+        ================================= */}
+
         <div className="left-side">
 
           <Lottie
@@ -42,55 +55,99 @@ function Register() {
             loop={true}
             style={{
               width: "90%",
-              maxWidth: "420px",
-              marginBottom: "20px",
+              maxWidth: "380px",
             }}
           />
 
           <h1>TalentVerse</h1>
 
-          <p>Your Complete Placement Preparation Hub</p>
+          <p>
+            Your Complete Placement Preparation Hub
+          </p>
 
         </div>
 
-        {/* Right Side */}
+
+        {/* ================================
+            RIGHT SIDE
+        ================================= */}
+
         <div className="right-side">
 
           <h2>Create Account</h2>
+
+          {/* ================================
+              NAME
+          ================================= */}
 
           <input
             type="text"
             placeholder="Full Name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) =>
+              setName(e.target.value)
+            }
           />
+
+
+          {/* ================================
+              EMAIL
+          ================================= */}
 
           <input
             type="email"
             placeholder="Email Address"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
           />
+
+
+          {/* ================================
+              PASSWORD
+          ================================= */}
 
           <input
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
           />
 
-          <button onClick={registerUser}>
-            Register
+
+          {/* ================================
+              REGISTER BUTTON
+          ================================= */}
+
+          <button
+            className="register-button"
+            onClick={registerUser}
+          >
+            REGISTER
           </button>
 
-          <p>
-            Already have an account?
-            <Link to="/login"> Login</Link>
+
+          {/* ================================
+              LOGIN LINK
+          ================================= */}
+
+          <p className="register-text">
+
+            Already have an account?{" "}
+
+            <Link to="/login">
+              Login
+            </Link>
+
           </p>
 
         </div>
 
       </div>
+
     </div>
   );
 }

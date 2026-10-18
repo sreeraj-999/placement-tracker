@@ -1,5 +1,5 @@
 /* =========================================
-   LOGIN / REGISTER PAGE
+   MAIN PAGE
 ========================================= */
 
 .register-page {
@@ -11,7 +11,7 @@
 
   align-items: center;
 
-  padding: 30px;
+  padding: 25px;
 
   box-sizing: border-box;
 
@@ -20,21 +20,21 @@
 
 
 /* =========================================
-   MAIN CONTAINER
+   MAIN LOGIN / REGISTER BOX
 ========================================= */
 
 .register-container {
   width: 100%;
 
-  max-width: 1100px;
+  max-width: 1000px;
 
-  min-height: 600px;
+  min-height: 590px;
 
   display: flex;
 
   background: #ffffff;
 
-  border-radius: 28px;
+  border-radius: 22px;
 
   overflow: hidden;
 
@@ -64,14 +64,14 @@
 
   text-align: center;
 
-  padding: 40px;
+  padding: 25px;
 
   box-sizing: border-box;
 }
 
 
 /* =========================================
-   LOTTIE ANIMATION
+   LOTTIE
 ========================================= */
 
 .left-side > div {
@@ -81,7 +81,7 @@
 
   align-items: center;
 
-  margin-bottom: 5px;
+  margin-bottom: 0;
 }
 
 
@@ -90,9 +90,9 @@
 ========================================= */
 
 .left-side h1 {
-  margin: 10px 0 8px;
+  margin: 5px 0 6px;
 
-  font-size: 46px;
+  font-size: 38px;
 
   font-weight: 700;
 
@@ -109,7 +109,7 @@
 .left-side p {
   margin: 0;
 
-  font-size: 20px;
+  font-size: 16px;
 
   font-weight: 400;
 
@@ -130,7 +130,7 @@
 
   justify-content: center;
 
-  padding: 70px 65px;
+  padding: 45px 55px;
 
   box-sizing: border-box;
 
@@ -139,7 +139,178 @@
 
 
 /* =========================================
-   STUDENT / ADMIN SLIDING SWITCH
+   LOGIN / REGISTER TITLE
+========================================= */
+
+.right-side h2 {
+  margin: 0 0 8px;
+
+  color: #1e293b;
+
+  font-size: 34px;
+
+  font-weight: 400;
+
+  letter-spacing: -1px;
+}
+
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+.register-subtitle,
+.login-subtitle {
+  margin: 0 0 20px;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.right-side input {
+  width: 100%;
+
+  height: 52px;
+
+  margin-bottom: 15px;
+
+  padding: 0 16px;
+
+  box-sizing: border-box;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #f1f3f7;
+
+  color: #1e293b;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition:
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.right-side input::placeholder {
+  color: #777777;
+}
+
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.right-side input:focus {
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 2px #c90000;
+}
+
+
+/* =========================================
+   REGISTER BUTTON
+========================================= */
+
+.register-button {
+  width: 100%;
+
+  height: 52px;
+
+  margin-top: 3px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #c90000;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* =========================================
+   REGISTER BUTTON HOVER
+========================================= */
+
+.register-button:hover {
+  background: #a80000;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.login-button {
+  width: 100%;
+
+  height: 52px;
+
+  margin-top: 3px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #c90000;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* =========================================
+   LOGIN BUTTON HOVER
+========================================= */
+
+.login-button:hover {
+  background: #a80000;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   STUDENT / ADMIN SWITCH
 ========================================= */
 
 .login-switch {
@@ -147,19 +318,19 @@
 
   width: 100%;
 
-  height: 58px;
+  height: 50px;
 
   display: flex;
 
   background: #f1f3f7;
 
-  border-radius: 12px;
+  border-radius: 10px;
 
-  padding: 5px;
+  padding: 4px;
 
   box-sizing: border-box;
 
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 
   overflow: hidden;
 }
@@ -172,13 +343,13 @@
 .login-switch-slider {
   position: absolute;
 
-  top: 5px;
+  top: 4px;
 
-  bottom: 5px;
+  bottom: 4px;
 
-  left: 5px;
+  left: 4px;
 
-  width: calc(50% - 5px);
+  width: calc(50% - 4px);
 
   background: #c90000;
 
@@ -213,7 +384,7 @@
 
 
 /* =========================================
-   SWITCH BUTTONS
+   SWITCH OPTIONS
 ========================================= */
 
 .switch-option {
@@ -231,21 +402,18 @@
 
   color: #64748b;
 
-  font-size: 15px;
+  font-size: 14px;
 
   font-weight: 700;
 
-  letter-spacing: 0.3px;
-
   cursor: pointer;
 
-  transition:
-    color 0.25s ease;
+  transition: color 0.25s ease;
 }
 
 
 /* =========================================
-   ACTIVE SWITCH TEXT
+   ACTIVE SWITCH
 ========================================= */
 
 .switch-option.active {
@@ -254,7 +422,7 @@
 
 
 /* =========================================
-   INACTIVE HOVER
+   INACTIVE SWITCH HOVER
 ========================================= */
 
 .switch-option:not(.active):hover {
@@ -263,150 +431,22 @@
 
 
 /* =========================================
-   LOGIN TITLE
-========================================= */
-
-.right-side h2 {
-  margin: 0 0 12px;
-
-  color: #1e293b;
-
-  font-size: 40px;
-
-  font-weight: 400;
-
-  letter-spacing: -1px;
-}
-
-
-/* =========================================
-   LOGIN SUBTITLE
-========================================= */
-
-.login-subtitle {
-  margin: 0 0 28px !important;
-
-  color: #64748b;
-
-  font-size: 15px !important;
-
-  line-height: 1.5;
-}
-
-
-/* =========================================
-   INPUTS
-========================================= */
-
-.right-side input {
-  width: 100%;
-
-  height: 60px;
-
-  margin-bottom: 20px;
-
-  padding: 0 20px;
-
-  box-sizing: border-box;
-
-  border: none;
-
-  border-radius: 12px;
-
-  background: #f1f3f7;
-
-  color: #1e293b;
-
-  font-size: 16px;
-
-  outline: none;
-
-  transition:
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-}
-
-
-/* =========================================
-   INPUT PLACEHOLDER
-========================================= */
-
-.right-side input::placeholder {
-  color: #777777;
-}
-
-
-/* =========================================
-   INPUT FOCUS
-========================================= */
-
-.right-side input:focus {
-  background: #ffffff;
-
-  box-shadow:
-    0 0 0 2px #c90000;
-}
-
-
-/* =========================================
-   LOGIN BUTTON
-========================================= */
-
-.login-button {
-  width: 100%;
-
-  height: 62px;
-
-  margin-top: 5px;
-
-  border: none;
-
-  border-radius: 12px;
-
-  background: #c90000;
-
-  color: #ffffff;
-
-  font-size: 17px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-
-/* =========================================
-   LOGIN BUTTON HOVER
-========================================= */
-
-.login-button:hover {
-  background: #a80000;
-
-  transform: translateY(-1px);
-}
-
-
-/* =========================================
-   REGISTER TEXT
+   REGISTER / LOGIN TEXT
 ========================================= */
 
 .register-text {
   text-align: center;
 
-  margin-top: 28px !important;
+  margin-top: 20px !important;
 
   color: #777777;
 
-  font-size: 15px;
+  font-size: 13px;
 }
 
 
 /* =========================================
-   REGISTER LINK
+   LINK
 ========================================= */
 
 .register-text a {
@@ -421,7 +461,7 @@
 
 
 /* =========================================
-   REGISTER LINK HOVER
+   LINK HOVER
 ========================================= */
 
 .register-text a:hover {
@@ -430,7 +470,7 @@
 
 
 /* =========================================
-   MOBILE RESPONSIVE
+   MOBILE
 ========================================= */
 
 @media (max-width: 850px) {
@@ -450,17 +490,9 @@
   .left-side {
     width: 100%;
 
-    min-height: 400px;
+    min-height: 350px;
 
-    padding: 30px;
-  }
-
-  .left-side h1 {
-    font-size: 38px;
-  }
-
-  .left-side p {
-    font-size: 17px;
+    padding: 25px;
   }
 
   .right-side {
@@ -469,9 +501,6 @@
     padding: 40px 35px;
   }
 
-  .right-side h2 {
-    font-size: 32px;
-  }
 }
 
 
@@ -490,9 +519,9 @@
   }
 
   .left-side {
-    min-height: 330px;
+    min-height: 300px;
 
-    padding: 25px 20px;
+    padding: 20px;
   }
 
   .left-side h1 {
@@ -511,21 +540,4 @@
     font-size: 28px;
   }
 
-  .login-switch {
-    height: 52px;
-  }
-
-  .switch-option {
-    font-size: 13px;
-  }
-
-  .right-side input {
-    height: 54px;
-  }
-
-  .login-button {
-    height: 56px;
-
-    font-size: 15px;
-  }
 }

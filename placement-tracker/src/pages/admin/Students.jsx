@@ -113,7 +113,14 @@ function Students() {
 
   return (
 
-    <div className="container-fluid min-vh-100 bg-light p-0">
+    <div
+  className="container-fluid bg-light p-0"
+  style={{
+    height: "100%",
+    overflow: "hidden",
+    boxSizing: "border-box",
+  }}
+>
 
 
 
@@ -121,7 +128,10 @@ function Students() {
       {/* CONTENT */}
       {/* ====================================== */}
 
-      <div className="container-fluid px-4 py-4">
+      <div
+  className="container-fluid px-4 py-3"
+  style={{ boxSizing: "border-box" }}
+>
 
 
         {/* BACK BUTTON */}

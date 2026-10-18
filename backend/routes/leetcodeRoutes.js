@@ -9,6 +9,12 @@ router.post("/sync", authMiddleware, async (req, res) => {
   try {
     const { username } = req.body;
 
+    if (!username || !username.trim()) {
+      return res.status(400).json({
+        message: "LeetCode username is required",
+      });
+    }
+
     const query = `
       query getUserProfile($username: String!) {
         matchedUser(username: $username) {
@@ -27,9 +33,7 @@ router.post("/sync", authMiddleware, async (req, res) => {
       "https://leetcode.com/graphql",
       {
         query,
-        variables: {
-          username,
-        },
+        variables: { username: username.trim() },
       },
       {
         headers: {
@@ -39,41 +43,65 @@ router.post("/sync", authMiddleware, async (req, res) => {
       }
     );
 
-    const user = response.data.data.matchedUser;
+    const user = response.data?.data?.matchedUser;
 
     if (!user) {
       return res.status(404).json({
-        message: "User not found",
+        message: "LeetCode user not found",
       });
     }
 
     const stats = user.submitStats.acSubmissionNum;
+    const totalSolved = Number(stats[0]?.count || 0);
+    const easySolved = Number(stats[1]?.count || 0);
+    const mediumSolved = Number(stats[2]?.count || 0);
+    const hardSolved = Number(stats[3]?.count || 0);
 
     let profile = await Leetcode.findOne({
       userId: req.user.id,
     });
 
+    const now = new Date();
+
     if (!profile) {
       profile = new Leetcode({
         userId: req.user.id,
+        username: user.username,
+        totalSolved,
+        easySolved,
+        mediumSolved,
+        hardSolved,
+        syncHistory: [
+          {
+            date: now,
+            problemsSolved: 0,
+            totalSolved,
+          },
+        ],
+      });
+    } else {
+      const previousTotal = Number(profile.totalSolved || 0);
+      const difference = Math.max(0, totalSolved - previousTotal);
+
+      profile.username = user.username;
+      profile.totalSolved = totalSolved;
+      profile.easySolved = easySolved;
+      profile.mediumSolved = mediumSolved;
+      profile.hardSolved = hardSolved;
+
+      profile.syncHistory.push({
+        date: now,
+        problemsSolved: difference,
+        totalSolved,
       });
     }
 
-    
-
-    profile.username = username;
-    profile.totalSolved = stats[0].count;
-    profile.easySolved = stats[1].count;
-    profile.mediumSolved = stats[2].count;
-    profile.hardSolved = stats[3].count;
-    profile.lastSync = new Date();
-
+    profile.lastSync = now;
     await profile.save();
 
     res.json(profile);
-
   } catch (err) {
-    console.log(err.response?.data || err.message);
+    console.error(err.response?.data || err.message);
 
     res.status(500).json({
       message: "Unable to fetch profile",

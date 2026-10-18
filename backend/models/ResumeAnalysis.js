@@ -1,59 +1,51 @@
+
 const mongoose = require("mongoose");
 
 const resumeSchema = new mongoose.Schema(
-{
+  {
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    fileName: {
+      type: String,
+      required: true,
     },
 
     resumeScore: {
-        type: Number,
-        default: 0,
+      type: Number,
+      default: 0,
     },
 
     atsScore: {
-        type: Number,
-        default: 0,
+      type: Number,
+      default: 0,
     },
 
-    strengths: [
-        {
-            type: String,
-        },
-    ],
+    breakdown: {
+      contact: Number,
+      education: Number,
+      skills: Number,
+      projects: Number,
+      experience: Number,
+      formatting: Number,
+      grammar: Number,
+    },
 
-    weaknesses: [
-        {
-            type: String,
-        },
-    ],
-
-    skillsDetected: [
-        {
-            type: String,
-        },
-    ],
-
-    missingSkills: [
-        {
-            type: String,
-        },
-    ],
-
-    suggestions: [
-        {
-            type: String,
-        },
-    ],
-
-},
-{
+    strengths: [String],
+    weaknesses: [String],
+    skillsDetected: [String],
+    missingSkills: [String],
+    suggestions: [String],
+  },
+  {
     timestamps: true,
-}
+  }
 );
 
 module.exports = mongoose.model(
-    "ResumeAnalysis",
-    resumeSchema
+  "ResumeAnalysis",
+  resumeSchema
 );
